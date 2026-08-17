@@ -6,22 +6,26 @@
     <id>sql-bundle</id>
     <formats>
         <format>zip</format>
+        <format>tar.gz</format>
     </formats>
-    <includeBaseDirectory>false</includeBaseDirectory>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <baseDirectoryName>app-sql-${project.version}</baseDirectoryName>
     <fileSets>
         <fileSet>
             <directory>src/main/sql</directory>
-            <outputDirectory>/</outputDirectory>
+            <outputDirectory>sql</outputDirectory>
             <includes>
                 <include>**/*.sql</include>
             </includes>
+            <fileMode>0644</fileMode>
         </fileSet>
         <fileSet>
             <directory>src/main/docs</directory>
-            <outputDirectory>/docs</outputDirectory>
+            <outputDirectory>docs</outputDirectory>
             <includes>
                 <include>**/*</include>
             </includes>
+            <fileMode>0644</fileMode>
         </fileSet>
     </fileSets>
 </assembly>

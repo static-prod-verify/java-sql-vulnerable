@@ -16,6 +16,20 @@
     <description>SQL schema and migrations</description>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/sql</directory>
+                <includes>
+                    <include>**/*.sql</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/docs</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -32,9 +46,20 @@
                                 <descriptor>src/assembly/sql-assembly.xml</descriptor>
                             </descriptors>
                             <finalName>app-sql</finalName>
+                            <appendAssemblyId>true</appendAssemblyId>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>true</addMavenDescriptor>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>
