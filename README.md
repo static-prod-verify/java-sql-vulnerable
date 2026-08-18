@@ -1,4 +1,4 @@
-# Java SQL Application
+# Java SQL Application. 
 
 A comprehensive multi-module Java application featuring Spring Boot backend, React frontend, and SQL schema management.
 
