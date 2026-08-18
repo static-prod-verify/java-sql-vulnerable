@@ -1,5 +1,11 @@
--- SQL Schema Initialization
+-- TSQL Schema Initialization
 -- This file initializes the main application schema
 
--- Enable foreign keys if needed
-PRAGMA foreign_keys = ON;
+SET ANSI_NULLS ON;
+GO
+SET QUOTED_IDENTIFIER ON;
+GO
+
+-- Check if database is being used
+USE master;
+GO

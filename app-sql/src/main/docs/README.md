@@ -1,7 +1,7 @@
-# SQL Schema Documentation
+# TSQL Schema Documentation
 
 ## Overview
-This module contains all SQL schema definitions, migrations, views, and procedures for the Java SQL Application. All SQL files are production-ready and fully documented.
+This module contains all TSQL (SQL Server) schema definitions, migrations, views, and stored procedures for the Java SQL Application. All SQL files are production-ready and fully documented for SQL Server 2016+.
 
 ## Migration Files
 
@@ -94,25 +94,34 @@ The SQL module produces:
 
 ## Application
 
-Apply migrations in order:
-```bash
-# Extract the bundle
-unzip app-sql-1.0.0-sql-bundle.zip
+Apply migrations in order using SQL Server Management Studio or sqlcmd:
 
-# Apply migrations
-mysql -u user -p database < sql/01_create_schema.sql
-mysql -u user -p database < sql/01_create_users_table.sql
-mysql -u user -p database < sql/02_create_posts_table.sql
-mysql -u user -p database < sql/03_create_comments_table.sql
-mysql -u user -p database < sql/04_seed_initial_data.sql
-mysql -u user -p database < sql/05_create_views_and_procedures.sql
+**PowerShell:**
+```powershell
+# Extract the bundle
+Expand-Archive app-sql-1.0.0-sql-bundle.zip
+
+# Apply migrations using sqlcmd
+sqlcmd -S server_name -d database_name -i sql/01_create_schema.sql
+sqlcmd -S server_name -d database_name -i sql/01_create_users_table.sql
+sqlcmd -S server_name -d database_name -i sql/02_create_posts_table.sql
+sqlcmd -S server_name -d database_name -i sql/03_create_comments_table.sql
+sqlcmd -S server_name -d database_name -i sql/04_seed_initial_data.sql
+sqlcmd -S server_name -d database_name -i sql/05_create_views_and_procedures.sql
 ```
+
+**SQL Server Management Studio:**
+1. Extract the bundle
+2. Open SQL Server Management Studio
+3. Connect to your database
+4. Open each SQL file and execute in sequential order
+5. Verify table creation in Object Explorer
 
 ## Database Compatibility
 
-- **H2**: Fully supported (development)
-- **PostgreSQL**: 12+ (production recommended)
-- **MySQL**: 8.0+ (production supported)
-- **Oracle**: 19+ (enterprise support)
+- **SQL Server**: 2016+ (primary target)
+- **SQL Server**: 2019+ (recommended)
+- **SQL Server**: 2022+ (latest)
+- **Azure SQL Database**: Fully compatible
 
-Adjustments may be needed for database-specific syntax.
+Note: All TSQL syntax is SQL Server specific. Conversion required for other databases.
